@@ -1,0 +1,17 @@
+{
+    "name": "ira/app",
+    "description": "INDT App",
+    "type": "project",
+    "require": {
+        "components/angular.js": "^1.3",
+        "components/jquery": "^3.2",
+        "twbs/bootstrap": "^3.3"
+    },
+    "authors": [
+        {
+            "name": "Isael Anjos",
+            "email": "isael.r.anjos@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
