@@ -1,0 +1,64 @@
+<!--Form Insert/Update-->
+<div class="container">
+    <h2>Authors Insert/Update Form</h2>
+    <span class="alert-warning">All fields are required</span>
+    <span class="alert-info" ng-if="form.id"><h3>{{message}}</h3></span>
+
+    <form name="form" class="form-horizontal" method="post" style="margin-top: 10px;" ng-submit="saveItem(form)">
+        <div class="form-group">
+            <div class="col-md-2"><label>First Name</label></div>
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="First name" id="firstName" ng-model="form.firstName" required="" autofocus=""></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2"><label>Last Name</label></div>
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="Last name" id="lastName" ng-model="form.lastName" required=""></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-6 text-right">
+                <input type="hidden" id="id" ng-model="form.id">
+                <button class="btn btn-success" type="submit">Save</button>
+                <button class="btn btn-danger" type="button" onclick="location.href = '#authors'" ng-if="form.id">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!--End Form-->
+<!--Grid List-->
+<div class="container">
+    <h2>Authors List</h2>
+    <!--Search-->
+    <div class="form-group form-inline">
+        <input type="text" class="form-control" placeholder="Search items" id="search" ng-model="search">
+        <button class="btn btn-default disabled">
+        <span class="glyphicon glyphicon-search"></span></button>
+    </div>
+    <!--End Search-->
+    <table class="table">
+        <tr>
+            <th>
+                Id&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by ID" ng-click="sort('id')" ng-init="sort('id')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>
+                First Name&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by first name" ng-click="sort('firstName')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>
+                Last Name&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by last name" ng-click="sort('id')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>Actions</th>
+        </tr>
+        <tr dir-paginate="row in list | filter:search | orderBy:sortKey:reverse | itemsPerPage:5">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>
+                <button class="btn btn-primary btn-xs" title="Details {{row.firstName}}"><span class="glyphicon glyphicon-book"></span>&nbsp;See Books</button>
+                <button class="btn btn-warning btn-xs" title="Edit {{row.firstName}}" ng-click="editItem(row.id)"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button>
+                <button class="btn btn-danger btn-xs" title="Delete {{row.firstName}}" ng-click="deleteItem(row.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+            </td>
+        </tr>
+    </table>
+    <div class="text-center">
+        <dir-pagination-controls max-size="5" boundary-links="true"  template-url="vendor/bower-asset/dirPagination/dirPagination.tpl.html"></dir-pagination-controls>
+    </div>
+</div>
+<!--End Grid-->

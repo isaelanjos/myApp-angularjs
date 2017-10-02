@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <!--Search-->
+    <div class="form-group form-inline">
+        <input type="text" class="form-control" placeholder="Search items" id="search" ng-model="search">
+        <button class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+        <button class="btn btn-success" onclick="location.href = '#authors/create'">
+            <span class="glyphicon glyphicon-plus"></span>&nbsp;Create New Author
+        </button>
+    </div>
+    <!--End Search-->
+    <table class="table table-hover">
+        <tr>
+            <th>
+                Id&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by ID" ng-click="sort('id')" ng-init="sort('id')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>
+                First Name&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by first name" ng-click="sort('firstName')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>
+                Last Name&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by last name" ng-click="sort('lastName')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        <tr dir-paginate="row in list | filter:search | orderBy:sortKey:reverse | itemsPerPage:5">
+            <td>{{row.id}}</td>
+            <td>{{row.firstName}}</td>
+            <td>{{row.lastName}}</td>
+            <td>
+                <a ng-href="#authors/detail/{{row.id}}"><button class="btn btn-primary btn-xs" title="Details {{row.firstName}}"><span class="glyphicon glyphicon-book"></span>&nbsp;See Books</button></a>
+                <a ng-href="#authors/update/{{row.id}}"><button class="btn btn-warning btn-xs" title="Edit {{row.firstName}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button></a>
+                <button class="btn btn-danger btn-xs" title="Delete {{row.firstName}}" ng-click="deleteItem(row.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+            </td>
+        </tr>
+        <tr ng-if="!list.length > 0">
+            <td colspan="4" align="center">Empty !</td>
+        </tr>
+    </table>
+    <div class="text-center">
+        <dir-pagination-controls max-size="5" boundary-links="true"  template-url="vendor/bower-asset/dirPagination/dirPagination.tpl.html"></dir-pagination-controls>
+    </div>
+</div>

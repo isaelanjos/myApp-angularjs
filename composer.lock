@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97d529468a7eb229907a6143494abd60",
+    "content-hash": "61046eca9607f36572e84203e2edbeb3",
     "packages": [
+        {
+            "name": "bower-asset/dirPagination",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/longhn/dirPagination.git",
+                "reference": "466d3922ec33ad9522ceb86c425518f343a49c8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/longhn/dirPagination/zipball/466d3922ec33ad9522ceb86c425518f343a49c8d",
+                "reference": "466d3922ec33ad9522ceb86c425518f343a49c8d",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "dirPagination.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Pagination component",
+            "keywords": [
+                "pagination"
+            ],
+            "time": "2015-06-28T11:12:49+00:00"
+        },
         {
             "name": "components/angular.js",
             "version": "1.3.16",

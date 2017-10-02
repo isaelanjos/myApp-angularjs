@@ -1,0 +1,71 @@
+<div class="container">
+    <h2>{{title}}</h2>
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <th width="150"><h4><b>Id:</b></h4></th>
+                <td><h4>{{data.id}}</h4></td>
+            </tr>
+            <tr>
+                <th><h4><b>First Name:</b></h4></th>
+                <td><h4>{{data.firstName}}</h4></td>
+            </tr>
+            <tr>
+                <th><h4><b>Last Name:</b></h4></th>
+                <td><h4>{{data.lastName}}</h4></td>
+            </tr>
+            <tr>
+                <th><h4><b>Books:</b></h4></th>
+                <td><h4>{{books.length}}</h4></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <h3>Add Book to {{data.firstName+' '+data.lastName}}</h3>
+    <form name="form" class="form-horizontal" method="post" ng-submit="addBook(data.id,form)">
+        <div class="form-group">
+            <div class="col-md-1 control-label"><label>Book Title</label></div>
+            <div class="col-md-2"><input type="text" class="form-control" placeholder="Book title" id="title" ng-model="form.title" required="" autofocus=""></div>
+            <button class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span>&nbsp;Add
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <h3>Books by {{data.firstName+' '+data.lastName}}</h3>
+    <!--Search-->
+    <div class="form-group form-inline">
+        <input type="text" class="form-control" placeholder="Search items" id="search" ng-model="search">
+        <button class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+    </div>
+    <!--End Search-->
+    <table class="table">
+        <tr>
+            <th>
+                Book Id&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by ID" ng-click="sort('id')" ng-init="sort('id')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>
+                Book Title&nbsp;<button class="btn btn-default btn-xs" title="Click here to sort by book title" ng-click="sort('title')"><span class="glyphicon glyphicon-sort"></span></button>
+            </th>
+            <th>Actions</th>
+        </tr>
+        <tr dir-paginate="book in books | filter:search | orderBy:sortKey:reverse | itemsPerPage:5">
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>
+                <button class="btn btn-danger btn-xs" title="Delete {{book.title}}" ng-click="deleteBook(book.authorId,book.id)"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
+            </td>
+        </tr>
+        <tr ng-if="!books.length > 0">
+            <td colspan="4" align="center">Empty !</td>
+        </tr>
+    </table>
+    <div class="text-center">
+        <dir-pagination-controls max-size="5" boundary-links="true"  template-url="vendor/bower-asset/dirPagination/dirPagination.tpl.html"></dir-pagination-controls>
+    </div>
+</div>

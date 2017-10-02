@@ -1,0 +1,20 @@
+<div class="container text-center">
+    <h2>{{title}}</h2>
+    <span class="alert-danger">Alert: All fields are required !</span>
+    <form name="form" class="form-horizontal" method="post" style="margin-top: 10px;" ng-submit="createAuthor(form)">
+        <div class="form-group">
+            <div class="col-md-4 control-label"><label>First Name</label></div>
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="First name" id="firstName" ng-model="form.firstName" required="" autofocus=""></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4 control-label"><label>Last Name</label></div>
+            <div class="col-md-4"><input type="text" class="form-control" placeholder="Last name" id="lastName" ng-model="form.lastName" required=""></div>
+        </div>
+        <div class="form-group">
+            <div class="text-center">
+                <button class="btn btn-success" type="submit">Create</button>
+                <button class="btn btn-danger" type="button" onclick="location.href = '#authors'">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
