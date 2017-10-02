@@ -11,10 +11,6 @@ app.config(function($routeProvider) {
         .when("/help", {
             templateUrl: "views/pages/help.html",
             controller: "siteCtrl"
-        })
-        .when("/404", {
-            templateUrl: "views/pages/404.html",
-            controller: "siteCtrl"
         });
 
 

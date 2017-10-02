@@ -3,7 +3,6 @@ var app = angular.module('myApp', [
     'ngMessages',
     'myApp.site',
     'myApp.author',
-    'myApp.book',
     'angularUtils.directives.dirPagination'
 ]);
 
